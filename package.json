@@ -1,0 +1,33 @@
+{
+  "name": "node-serve",
+  "version": "1.0.0",
+  "description": "A lightweight static file server built using the Node.js HTTP module without external frameworks.",
+  "keywords": [
+    "nodejs",
+    "http-server",
+    "static-files",
+    "web-server",
+    "backend",
+    "javascript",
+    "node-http",
+    "file-system",
+    "streams",
+    "networking",
+    "learning-project"
+  ],
+  "homepage": "https://github.com/harshitclub/node-serve#readme",
+  "bugs": {
+    "url": "https://github.com/harshitclub/node-serve/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshitclub/node-serve.git"
+  },
+  "license": "MIT",
+  "author": "Harshit Kumar",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
