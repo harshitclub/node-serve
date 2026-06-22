@@ -77,10 +77,16 @@
 
         <div class="contact-form-wrapper">
           <h2>Send us a Message</h2>
-          <form class="contact-form" id="contactForm">
+          <form
+            class="contact-form"
+            id="contactForm"
+            action="/contact"
+            method="POST"
+          >
             <div class="form-group">
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
                 required
                 class="form-input"
@@ -89,6 +95,7 @@
             <div class="form-group">
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 required
                 class="form-input"
@@ -97,6 +104,7 @@
             <div class="form-group">
               <input
                 type="text"
+                name="subject"
                 placeholder="Subject"
                 required
                 class="form-input"
@@ -104,6 +112,7 @@
             </div>
             <div class="form-group">
               <textarea
+                name="message"
                 placeholder="Your Message"
                 rows="5"
                 required

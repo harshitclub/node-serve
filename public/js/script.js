@@ -27,34 +27,6 @@ faqHeaders.forEach((header) => {
   });
 });
 
-// Form Handling
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    // Get form values
-    const formData = new FormData(contactForm);
-    const name = contactForm.querySelector('input[type="text"]').value;
-    const email = contactForm.querySelector('input[type="email"]').value;
-
-    // Show success message
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = "✓ Message Sent!";
-    submitBtn.style.backgroundColor = "var(--secondary-color)";
-
-    // Reset form
-    contactForm.reset();
-
-    // Reset button after 3 seconds
-    setTimeout(() => {
-      submitBtn.textContent = originalText;
-      submitBtn.style.backgroundColor = "";
-    }, 3000);
-  });
-}
-
 // Smooth scroll behavior for links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {

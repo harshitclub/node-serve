@@ -21,7 +21,7 @@ const server = http.createServer((req, res) => {
     const filePath = path.join(__dirname, "public", "applications.html");
 
     serveFile(res, filePath, "text/html");
-  } else if (req.url === "/contact") {
+  } else if (req.url === "/contact" && req.method === "GET") {
     const filePath = path.join(__dirname, "public", "contact.html");
 
     serveFile(res, filePath, "text/html");
@@ -44,6 +44,22 @@ const server = http.createServer((req, res) => {
     const contentType = mimeTypes[ext] || "application/octet-stream";
 
     serveFile(res, filePath, contentType);
+  } else if (req.url === "/contact" && req.method === "POST") {
+    let body = "";
+
+    req.on("data", (chunk) => {
+      body += chunk.toString();
+    });
+
+    req.on("end", () => {
+      console.log(body);
+
+      res.writeHead(200, {
+        "Content-Type": "text/plain",
+      });
+
+      res.end("Form Submitted Successfully");
+    });
   } else {
     res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("Page Not Found!\n");
@@ -53,3 +69,17 @@ const server = http.createServer((req, res) => {
 server.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
+
+function gracefulShutdown(signal) {
+  console.log(`${signal} received`);
+
+  server.close(() => {
+    console.log("Server closed");
+
+    process.exit(0);
+  });
+}
+
+process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+
+process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
